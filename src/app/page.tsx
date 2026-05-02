@@ -1362,7 +1362,7 @@ function UrgencyBanner() {
             transition={{ duration: 1.5, repeat: Infinity }}
           />
           <span className="text-slate-300 font-medium">
-            🔴 September 2025 Intake — Apply Before May 2025!
+            🔴 Intakes Are Open — Apply Now!
           </span>
           <a
             href="#countries"
