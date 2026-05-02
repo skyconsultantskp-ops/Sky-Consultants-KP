@@ -2006,13 +2006,13 @@ function ApplicationTimeline() {
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
   const milestones = [
-    { month: 'Jan – Mar', title: 'Start Preparation', desc: 'Document collection, attestation & verification', color: 'from-emerald-500 to-teal-500', active: true },
-    { month: 'Mar – Apr', title: 'Apply to Universities', desc: 'Submit applications to preferred universities', color: 'from-teal-500 to-cyan-500', active: true },
-    { month: 'Apr – May', title: 'Application Deadlines', desc: 'Final submission windows close', color: 'from-cyan-500 to-teal-500', active: false },
-    { month: 'May – Jun', title: 'Receive Admission Letters', desc: 'Acceptances & enrollment confirmations', color: 'from-teal-500 to-emerald-500', active: false },
-    { month: 'Jun – Jul', title: 'Visa Application & Filing', desc: 'Submit visa docs, biometrics & interviews', color: 'from-emerald-500 to-cyan-500', active: false },
-    { month: 'August', title: 'Visa Approval & Travel Prep', desc: 'Get visa approved, book flights & pack', color: 'from-cyan-500 to-emerald-500', active: false },
-    { month: 'September', title: 'Departure & Start Studies!', desc: 'Fly out and begin your new journey 🎉', color: 'from-emerald-400 to-teal-400', active: false },
+    { title: 'Start Preparation', desc: 'Document collection, attestation & verification', color: 'from-emerald-500 to-teal-500', active: true },
+    { title: 'Apply to Universities', desc: 'Submit applications to preferred universities', color: 'from-teal-500 to-cyan-500', active: true },
+    { title: 'Application Deadlines', desc: 'Final submission windows close', color: 'from-cyan-500 to-teal-500', active: false },
+    { title: 'Receive Admission Letters', desc: 'Acceptances & enrollment confirmations', color: 'from-teal-500 to-emerald-500', active: false },
+    { title: 'Visa Application & Filing', desc: 'Submit visa docs, biometrics & interviews', color: 'from-emerald-500 to-cyan-500', active: false },
+    { title: 'Visa Approval & Travel Prep', desc: 'Get visa approved, book flights & pack', color: 'from-cyan-500 to-emerald-500', active: false },
+    { title: 'Departure & Start Studies!', desc: 'Fly out and begin your new journey 🎉', color: 'from-emerald-400 to-teal-400', active: false },
   ];
 
   return (
@@ -2059,10 +2059,7 @@ function ApplicationTimeline() {
                   }`}>
                     <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${m.color}`} />
                   </div>
-                  {/* Month */}
-                  <span className={`text-xs font-bold mb-1 ${i === 0 ? 'text-emerald-400' : 'text-slate-400'}`}>
-                    {m.month}
-                  </span>
+
                   {/* Title */}
                   <h4 className="text-white text-xs font-semibold text-center mb-1 leading-tight">{m.title}</h4>
                   {/* Description */}
@@ -2089,9 +2086,7 @@ function ApplicationTimeline() {
                     <div className={`w-6 h-6 rounded-full flex items-center justify-center ${i === 0 ? 'bg-emerald-500/20' : 'bg-slate-800'}`}>
                       <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${m.color}`} />
                     </div>
-                    <span className={`text-[10px] font-bold ${i === 0 ? 'text-emerald-400' : 'text-slate-500'}`}>
-                      {m.month}
-                    </span>
+
                   </div>
                   <h4 className="text-white text-sm font-semibold mb-1">{m.title}</h4>
                   <p className="text-slate-500 text-[10px] leading-snug">{m.desc}</p>
