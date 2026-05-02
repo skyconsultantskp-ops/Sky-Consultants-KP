@@ -374,9 +374,8 @@ function HowItWorks() {
 
   const steps = [
     { step: '01', icon: Handshake, title: 'Free Consultation', desc: 'Book a free session with our expert counselors to discuss your study goals and budget.' },
-    { step: '02', icon: FileCheck, title: 'Document Preparation', desc: 'We handle all documentation — attestation, translations, MOFA, IBCC, HEC verification.' },
-    { step: '03', icon: Building2, title: 'University Application', desc: 'We apply to top universities matching your profile and secure your admission letter.' },
-    { step: '04', icon: Plane, title: 'Visa & Travel', desc: 'From visa filing to travel arrangements — we ensure a smooth journey to your destination.' },
+    { step: '02', icon: Building2, title: 'University Application', desc: 'We apply to top universities matching your profile and secure your admission letter.' },
+    { step: '03', icon: Plane, title: 'Visa & Travel', desc: 'From visa filing to travel arrangements — we ensure a smooth journey to your destination.' },
   ];
 
   return (
@@ -401,7 +400,7 @@ function HowItWorks() {
           {/* Connection line */}
           <div className="hidden md:block absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent -translate-y-1/2" />
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {steps.map((item, i) => (
               <motion.div
                 key={i}
