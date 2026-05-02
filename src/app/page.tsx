@@ -73,30 +73,44 @@ function MeshBackground() {
 }
 
 /* ─── Connection Lines SVG ─── */
+// Deterministic pseudo-random to avoid hydration mismatch (Math.random() differs SSR vs client)
+function seededRandom(seed: number) {
+  const x = Math.sin(seed * 12.9898 + 78.233) * 43758.5453;
+  return x - Math.floor(x);
+}
+
 function ConnectionLines() {
   const points = countries.map((_, i) => {
     const angle = (i / countries.length) * Math.PI * 2 - Math.PI / 2;
-    const rx = 35 + Math.random() * 10;
-    const ry = 30 + Math.random() * 10;
+    const rx = 35 + seededRandom(i * 2) * 10;
+    const ry = 30 + seededRandom(i * 2 + 1) * 10;
     return { x: 50 + rx * Math.cos(angle), y: 50 + ry * Math.sin(angle) };
   });
+
+  // Pre-compute connections deterministically
+  const connections: { from: number; to: number }[] = [];
+  for (let i = 0; i < points.length; i++) {
+    for (let j = i + 1; j < points.length; j++) {
+      if (seededRandom(i * 100 + j) > 0.6) {
+        connections.push({ from: i, to: j });
+      }
+    }
+  }
 
   return (
     <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
       {points.map((p, i) => (
         <g key={i}>
-          {points.map((p2, j) => (
-            i < j && Math.random() > 0.6 ? (
-              <motion.line
-                key={`${i}-${j}`}
-                x1={p.x} y1={p.y} x2={p2.x} y2={p2.y}
-                stroke="rgb(16, 185, 129)"
-                strokeWidth="0.15"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: [0, 0.5, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: i * 0.3 + j * 0.1, ease: 'easeInOut' }}
-              />
-            ) : null
+          {connections.filter(c => c.from === i).map((c) => (
+            <motion.line
+              key={`${c.from}-${c.to}`}
+              x1={points[c.from].x} y1={points[c.from].y} x2={points[c.to].x} y2={points[c.to].y}
+              stroke="rgb(16, 185, 129)"
+              strokeWidth="0.15"
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: [0, 0.5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, delay: c.from * 0.3 + c.to * 0.1, ease: 'easeInOut' }}
+            />
           ))}
           <motion.circle
             cx={p.x} cy={p.y} r="0.8"
