@@ -1196,6 +1196,46 @@ function ContactFooter() {
                 <Mail className="w-3 h-3" /> skyconsultantskp@gmail.com
               </a>
             </div>
+
+            {/* Social Media Links */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://facebook.com/skyconsultantskp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-slate-900/50 border border-slate-800 flex items-center justify-center hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group"
+                aria-label="Facebook"
+              >
+                <svg className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <a
+                href="https://instagram.com/skyconsultantskp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-slate-900/50 border border-slate-800 flex items-center justify-center hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group"
+                aria-label="Instagram"
+              >
+                <svg className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+              </a>
+              <a
+                href="https://wa.me/923075977094"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-slate-900/50 border border-slate-800 flex items-center justify-center hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group"
+                aria-label="WhatsApp"
+              >
+                <svg className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </a>
+              <a
+                href="https://youtube.com/@skyconsultantskp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-slate-900/50 border border-slate-800 flex items-center justify-center hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:shadow-lg hover:shadow-emerald-500/20 transition-all duration-300 group"
+                aria-label="YouTube"
+              >
+                <svg className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
           </div>
 
           <div className="mt-6 text-center">
@@ -1706,15 +1746,15 @@ function FAQSection() {
   const faqs = [
     {
       q: 'Do I need IELTS to study abroad?',
-      a: 'No! Most of our partner universities accept MOI (Medium of Instruction) letter instead of IELTS. Countries like Italy, Turkey, Serbia, and Germany have options without IELTS.',
+      a: 'No! Most of our partner universities accept MOI (Medium of Instruction) letter instead of IELTS. 🇮🇹 Italy, 🇹🇷 Turkey, 🇷🇸 Serbia, and 🇩🇪 Germany have options without IELTS.',
     },
     {
       q: 'What is the minimum percentage required?',
-      a: 'It varies by country and level. For UG: 50-70%, for PG: 55-70%. Some countries like Serbia accept as low as 50%. Contact us for country-specific requirements.',
+      a: 'It varies by country and level. For UG: 50-70%, for PG: 55-70%. 🇷🇸 Serbia accepts as low as 50%. Contact us for country-specific requirements.',
     },
     {
       q: 'How much bank statement is required?',
-      a: 'It ranges from 10 Lac (Serbia) to 60+ Lac (South Korea, UK). We guide you on the exact requirements and help with the documentation.',
+      a: 'It ranges from 10 Lac (🇷🇸 Serbia) to 60+ Lac (🇰🇷 South Korea, 🇬🇧 UK). We guide you on the exact requirements and help with the documentation.',
     },
     {
       q: 'What documents are needed?',
@@ -1722,15 +1762,15 @@ function FAQSection() {
     },
     {
       q: 'How long does the visa process take?',
-      a: 'Typically 3-6 months depending on the country. Turkey and Serbia are fastest (3-4 months), while Italy may take 4-6 months.',
+      a: 'Typically 3-6 months depending on the country. 🇹🇷 Turkey and 🇷🇸 Serbia are fastest (3-4 months), while 🇮🇹 Italy may take 4-6 months.',
     },
     {
       q: 'Are scholarships available?',
-      a: 'Yes! Italy offers fully funded scholarships (free tuition + accommodation + stipend). Turkey and France offer fee waivers. South Korea provides full scholarships with accommodation and stipend.',
+      a: 'Yes! 🇮🇹 Italy offers fully funded scholarships (free tuition + accommodation + stipend). 🇹🇷 Turkey and 🇫🇷 France offer fee waivers. 🇰🇷 South Korea provides full scholarships with accommodation and stipend.',
     },
     {
       q: 'Can I work part-time while studying?',
-      a: 'Yes! Most countries allow 20 hours/week part-time work. Ireland, UK, Germany, and France have generous work allowances for students.',
+      a: 'Yes! Most countries allow 20 hours/week part-time work. 🇮🇪 Ireland, 🇬🇧 UK, 🇩🇪 Germany, and 🇫🇷 France have generous work allowances for students.',
     },
     {
       q: 'What is the consultancy fee?',
@@ -1898,6 +1938,253 @@ function BackToTop() {
   );
 }
 
+/* ─── Countries Flag Parade ─── */
+function CountriesFlagParade() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#060d1b]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Globe className="w-3 h-3" /> 10+ Countries
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Our <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Destinations</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">Explore world-class education across 10+ countries — from budget-friendly to premium destinations.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 md:gap-5">
+          {countries.map((country, i) => {
+            const costNum = country.visa.totalCost.match(/(\d+)/);
+            return (
+              <motion.a
+                key={country.name}
+                href="#countries"
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group"
+              >
+                <div className="p-5 md:p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/30 transition-all duration-500 text-center hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer">
+                  {/* Flag */}
+                  <motion.span
+                    className="block text-5xl md:text-6xl mb-3"
+                    whileHover={{ scale: 1.15, rotate: [0, 5, -5, 0] }}
+                    transition={{ duration: 0.4 }}
+                  >
+                    {country.flag}
+                  </motion.span>
+                  {/* Country name */}
+                  <h3 className="text-white font-bold text-sm md:text-base mb-1">{country.name}</h3>
+                  {/* Cost detail */}
+                  <p className="text-emerald-400 text-xs font-medium">
+                    From {costNum ? `${costNum[1]} Lac` : country.visa.totalCost}
+                  </p>
+                </div>
+              </motion.a>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Application Timeline ─── */
+function ApplicationTimeline() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  const milestones = [
+    { month: 'Jan – Mar', title: 'Start Preparation', desc: 'Document collection, attestation & verification', color: 'from-emerald-500 to-teal-500', active: true },
+    { month: 'Mar – Apr', title: 'Apply to Universities', desc: 'Submit applications to preferred universities', color: 'from-teal-500 to-cyan-500', active: true },
+    { month: 'Apr – May', title: 'Application Deadlines', desc: 'Final submission windows close', color: 'from-cyan-500 to-teal-500', active: false },
+    { month: 'May – Jun', title: 'Receive Admission Letters', desc: 'Acceptances & enrollment confirmations', color: 'from-teal-500 to-emerald-500', active: false },
+    { month: 'Jun – Jul', title: 'Visa Application & Filing', desc: 'Submit visa docs, biometrics & interviews', color: 'from-emerald-500 to-cyan-500', active: false },
+    { month: 'August', title: 'Visa Approval & Travel Prep', desc: 'Get visa approved, book flights & pack', color: 'from-cyan-500 to-emerald-500', active: false },
+    { month: 'September', title: 'Departure & Start Studies!', desc: 'Fly out and begin your new journey 🎉', color: 'from-emerald-400 to-teal-400', active: false },
+  ];
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#0a1628]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Clock className="w-3 h-3" /> Plan Ahead
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Application <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Timeline</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">Plan your journey from preparation to departure — month by month.</p>
+        </motion.div>
+
+        {/* Desktop timeline (horizontal) */}
+        <div className="hidden md:block">
+          <div className="relative">
+            {/* Horizontal line */}
+            <div className="absolute top-6 left-0 right-0 h-0.5 bg-slate-800" />
+            <div className="absolute top-6 left-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-500" style={{ width: '30%' }} />
+            <div className="flex justify-between">
+              {milestones.map((m, i) => (
+                <motion.div
+                  key={i}
+                  className="relative flex flex-col items-center w-1/7 min-w-0"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  {/* Dot */}
+                  <div className={`relative z-10 w-12 h-12 rounded-full border-2 flex items-center justify-center mb-4 ${
+                    i === 0
+                      ? 'bg-emerald-500/20 border-emerald-500 shadow-lg shadow-emerald-500/30'
+                      : 'bg-slate-900 border-slate-700'
+                  }`}>
+                    <div className={`w-3 h-3 rounded-full bg-gradient-to-r ${m.color}`} />
+                  </div>
+                  {/* Month */}
+                  <span className={`text-xs font-bold mb-1 ${i === 0 ? 'text-emerald-400' : 'text-slate-400'}`}>
+                    {m.month}
+                  </span>
+                  {/* Title */}
+                  <h4 className="text-white text-xs font-semibold text-center mb-1 leading-tight">{m.title}</h4>
+                  {/* Description */}
+                  <p className="text-slate-500 text-[10px] text-center leading-snug max-w-[120px]">{m.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile timeline (vertical scrollable) */}
+        <div className="md:hidden overflow-x-auto pb-4 -mx-4 px-4 scrollbar-hide">
+          <div className="relative flex gap-4 min-w-max">
+            {milestones.map((m, i) => (
+              <motion.div
+                key={i}
+                className="relative flex-shrink-0 w-44"
+                initial={{ opacity: 0, x: 30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+              >
+                <div className={`p-4 rounded-2xl bg-slate-900/40 border ${i === 0 ? 'border-emerald-500/40' : 'border-slate-800'} h-full`}>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center ${i === 0 ? 'bg-emerald-500/20' : 'bg-slate-800'}`}>
+                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${m.color}`} />
+                    </div>
+                    <span className={`text-[10px] font-bold ${i === 0 ? 'text-emerald-400' : 'text-slate-500'}`}>
+                      {m.month}
+                    </span>
+                  </div>
+                  <h4 className="text-white text-sm font-semibold mb-1">{m.title}</h4>
+                  <p className="text-slate-500 text-[10px] leading-snug">{m.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Work & Stay Back ─── */
+function WorkStayBack() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  const workData = [
+    { flag: '🇮🇹', name: 'Italy', partTime: '20 hrs/week', stayBack: '1 year (job search visa)' },
+    { flag: '🇹🇷', name: 'Turkey', partTime: 'Allowed', stayBack: '1 year' },
+    { flag: '🇷🇸', name: 'Serbia', partTime: 'Allowed', stayBack: 'Options available' },
+    { flag: '🇫🇮', name: 'Finland', partTime: '25 hrs/week', stayBack: '1 year (job search)' },
+    { flag: '🇫🇷', name: 'France', partTime: '20 hrs/week', stayBack: '1 year (APS visa)' },
+    { flag: '🇬🇧', name: 'UK', partTime: '20 hrs/week', stayBack: '2 years (Graduate Route)' },
+    { flag: '🇧🇪', name: 'Belgium', partTime: '20 hrs/week', stayBack: '1 year' },
+    { flag: '🇩🇪', name: 'Germany', partTime: '20 hrs/week', stayBack: '18 months (job seeker)' },
+    { flag: '🇰🇷', name: 'South Korea', partTime: 'Allowed', stayBack: 'D-10 visa' },
+    { flag: '🇮🇪', name: 'Ireland', partTime: '20 hrs/week', stayBack: '2 years (Third Level Graduate)' },
+  ];
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#060d1b]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Briefcase className="w-3 h-3" /> Post-Study Benefits
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Work & Stay Back <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Options</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">Earn while you learn — and stay back after graduation to build your career abroad.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          {workData.map((item, i) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.07 }}
+              className="group"
+            >
+              <div className="p-5 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/30 transition-all duration-500 h-full hover:shadow-lg hover:shadow-emerald-500/5">
+                {/* Flag + Name */}
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl">{item.flag}</span>
+                  <h3 className="text-white font-bold text-sm">{item.name}</h3>
+                </div>
+                {/* Part-time */}
+                <div className="flex items-start gap-2 mb-3">
+                  <Clock className="w-3.5 h-3.5 text-teal-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-slate-500 text-[10px] uppercase tracking-widest">Part-time Work</p>
+                    <p className="text-slate-200 text-sm font-medium">{item.partTime}</p>
+                  </div>
+                </div>
+                {/* Stay-back */}
+                <div className="flex items-start gap-2">
+                  <Briefcase className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-slate-500 text-[10px] uppercase tracking-widest">Stay Back</p>
+                    <p className="text-slate-200 text-sm font-medium">{item.stayBack}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#060d1b]">
@@ -1906,11 +2193,14 @@ export default function Home() {
         <div id="home"><HeroSection /></div>
         <UrgencyBanner />
         <StatsSection />
+        <CountriesFlagParade />
         <div id="process"><HowItWorks /></div>
+        <ApplicationTimeline />
         <UniversityMarquee />
         <CountriesSection />
         <CostComparison />
         <ScholarshipHighlights />
+        <WorkStayBack />
         <AboutUs />
         <DocumentChecklist />
         <WhyChooseUs />
