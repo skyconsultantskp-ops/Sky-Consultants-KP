@@ -7,7 +7,8 @@ import {
   ChevronDown, Clock, DollarSign, Building2, BookOpen,
   Star, ArrowRight, ExternalLink, Menu, X, Users,
   Award, Shield, Headphones, CheckCircle2, Sparkles,
-  FileCheck, Languages, Wallet, Handshake, Zap, TrendingUp, ArrowUp
+  FileCheck, Languages, Wallet, Handshake, Zap, TrendingUp, ArrowUp,
+  Target, Eye, Heart, Briefcase
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -1521,6 +1522,181 @@ function ScholarshipHighlights() {
   );
 }
 
+/* ─── About Us Section ─── */
+function AboutUs() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  const values = [
+    { icon: Target, title: 'Our Mission', desc: 'To make international education accessible and affordable for every student in Pakistan.', color: 'from-emerald-500 to-teal-500', bg: 'bg-emerald-500/10' },
+    { icon: Eye, title: 'Our Vision', desc: 'To become the most trusted education consultancy in KPK, transforming lives through global opportunities.', color: 'from-teal-500 to-cyan-500', bg: 'bg-teal-500/10' },
+    { icon: Heart, title: 'Built on Trust', desc: '98% visa success rate with transparent processes — no hidden fees, no false promises.', color: 'from-cyan-500 to-blue-500', bg: 'bg-cyan-500/10' },
+    { icon: Briefcase, title: '5+ Years Experience', desc: 'Half a decade of expertise navigating visa processes across 10+ countries for Pakistani students.', color: 'from-amber-500 to-orange-500', bg: 'bg-amber-500/10' },
+  ];
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#0a1628]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+        <div className="absolute -top-40 left-1/4 w-[500px] h-[500px] bg-emerald-500/3 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Sparkles className="w-3 h-3" /> Who We Are
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            About <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Sky Consultants KP</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">Your trusted partner for studying abroad from KPK, Pakistan.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left: Descriptive text */}
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="space-y-6"
+          >
+            <p className="text-slate-300 text-lg leading-relaxed">
+              Based in <span className="text-white font-semibold">Khyber Pakhtunkhwa, Pakistan</span>, Sky Consultants KP is a premier education consultancy dedicated to helping students achieve their dream of studying abroad. We specialize in guiding students to top universities across <span className="text-emerald-400 font-semibold">10+ countries</span> including Italy, Turkey, Germany, UK, and more.
+            </p>
+            <p className="text-slate-300 text-lg leading-relaxed">
+              With over <span className="text-white font-semibold">5 years of experience</span> and a proven track record of <span className="text-emerald-400 font-semibold">98% visa success rate</span>, we provide end-to-end support — from free consultation and document preparation to university admission and visa filing.
+            </p>
+            <p className="text-slate-300 text-lg leading-relaxed">
+              Our team of expert counselors understands the unique challenges faced by students from KPK and works tirelessly to make international education <span className="text-emerald-400 font-semibold">accessible, affordable, and achievable</span> for everyone.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              {[
+                { icon: Globe, label: '10+ Countries' },
+                { icon: Users, label: '1000+ Students' },
+                { icon: TrendingUp, label: '98% Success' },
+                { icon: Award, label: '5+ Years' },
+              ].map((item, i) => (
+                <div key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900/60 border border-slate-800">
+                  <item.icon className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-slate-300 font-medium">{item.label}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Right: Values grid */}
+          <div className="grid grid-cols-2 gap-4">
+            {values.map((value, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30, scale: 0.95 }}
+                animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.12 }}
+                className="group"
+              >
+                <div className="relative p-5 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/20 transition-all duration-500 h-full">
+                  <div className={`absolute -top-8 -right-8 w-20 h-20 rounded-full bg-gradient-to-r ${value.color} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500`} />
+                  <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl ${value.bg} mb-3 group-hover:scale-110 transition-transform duration-300`}>
+                    <value.icon className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <h4 className="text-white font-bold text-sm mb-1.5">{value.title}</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed">{value.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Document Checklist Section ─── */
+function DocumentChecklist() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  const documents = [
+    { title: 'Attested Educational Documents', desc: 'All boards & university certificates must be attested by the respective issuing authority.' },
+    { title: 'IBCC Equivalence Certificate', desc: 'Required for students who have completed education from a different board or system.' },
+    { title: 'MOFA Attestation', desc: 'Ministry of Foreign Affairs attestation is mandatory for all educational documents.' },
+    { title: 'HEC Verified Degree & Transcript', desc: 'Higher Education Commission verification for university degrees and transcripts.' },
+    { title: 'Valid Passport', desc: 'A valid passport with at least 6 months validity beyond your intended travel date.' },
+    { title: 'Bank Statement', desc: 'Country-specific amount required — ranges from 10 Lac to 60+ Lac PKR depending on destination.' },
+    { title: 'English Proficiency', desc: 'MOI Letter from your institution or IELTS score (5.5–6.5) depending on the country.' },
+    { title: 'Passport-size Photographs', desc: 'Recent passport-size photographs with white background, as per embassy specifications.' },
+  ];
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#060d1b]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+        <div className="absolute -bottom-40 right-1/4 w-[500px] h-[500px] bg-teal-500/3 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <FileCheck className="w-3 h-3" /> Checklist
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Documents You&apos;ll <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Need</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">Make sure you have these documents ready before starting your application.</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {documents.map((doc, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group"
+            >
+              <div className="relative p-5 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/20 transition-all duration-500 h-full">
+                <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-emerald-500/5 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                <div className="flex items-start gap-3">
+                  <div className="shrink-0 mt-0.5">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm mb-1.5">{doc.title}</h4>
+                    <p className="text-slate-400 text-xs leading-relaxed">{doc.desc}</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Help note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          className="mt-10 p-5 rounded-2xl bg-emerald-500/5 border border-emerald-500/15 text-center"
+        >
+          <p className="text-slate-300 text-sm">
+            <span className="text-emerald-400 font-semibold">Don&apos;t worry about the paperwork!</span> Our team handles the entire document preparation and attestation process for you.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── FAQ Section ─── */
 function FAQSection() {
   const ref = useRef(null);
@@ -1735,6 +1911,8 @@ export default function Home() {
         <CountriesSection />
         <CostComparison />
         <ScholarshipHighlights />
+        <AboutUs />
+        <DocumentChecklist />
         <WhyChooseUs />
         <Testimonials />
         <FAQSection />
