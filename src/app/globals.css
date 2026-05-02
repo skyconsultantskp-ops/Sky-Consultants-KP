@@ -122,68 +122,6 @@
 }
 
 /* Custom animations for Sky Consultants KP */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes float-delayed {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes particle-float {
-  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-  50% { transform: translate(var(--tx), var(--ty)) scale(1.2); opacity: 0.4; }
-  100% { transform: translate(0, 0) scale(1); opacity: 0.8; }
-}
-
-@keyframes slide-up {
-  from { transform: translateY(40px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float-delayed 5s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
-
-.animate-particle-float {
-  animation: particle-float 8s ease-in-out infinite;
-}
 
 /* 3D card perspective */
 .perspective-1000 {
@@ -192,10 +130,6 @@
 
 .preserve-3d {
   transform-style: preserve-3d;
-}
-
-.backface-hidden {
-  backface-visibility: hidden;
 }
 
 /* Custom scrollbar */
@@ -208,30 +142,12 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(16, 185, 129, 0.3);
+  background: rgba(16, 185, 129, 0.2);
   border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(16, 185, 129, 0.5);
-}
-
-/* Globe animation */
-@keyframes globe-rotate {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
-}
-
-.globe-rotate {
-  animation: globe-rotate 30s linear infinite;
-}
-
-/* Glass morphism */
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(16, 185, 129, 0.4);
 }
 
 /* Smooth scroll */
@@ -239,13 +155,8 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Hero parallax stars */
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-.star {
-  animation: twinkle var(--duration) ease-in-out infinite;
-  animation-delay: var(--delay);
+/* Selection color */
+::selection {
+  background: rgba(16, 185, 129, 0.3);
+  color: white;
 }
