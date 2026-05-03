@@ -8,7 +8,7 @@ import {
   Star, ArrowRight, ExternalLink, Menu, X, Users,
   Award, Shield, Headphones, CheckCircle2, Sparkles,
   FileCheck, Languages, Wallet, Handshake, Zap, TrendingUp, ArrowUp,
-  Target, Eye, Heart, Briefcase
+  Target, Eye, Heart, Briefcase, Send, MessageSquare, User, Flag
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -1130,6 +1130,399 @@ function Testimonials() {
   );
 }
 
+/* ─── Language Requirements Section ─── */
+function LanguageRequirements() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  const langData = countries.map(c => ({
+    name: c.name,
+    flag: c.flag,
+    ug: c.ug.ielts,
+    pg: c.pg.ielts,
+  }));
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#0a1628]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+        <div className="absolute -top-40 right-1/4 w-[400px] h-[400px] bg-emerald-500/3 rounded-full blur-[120px]" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Languages className="w-3 h-3" /> Language Requirements
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Do You Need <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">IELTS?</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">
+            Most of our partner countries accept Medium of Instruction (MOI) — no IELTS needed!
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {langData.map((item, i) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: i * 0.05 }}
+              className="group p-4 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-[0_0_30px_-10px_rgba(16,185,129,0.15)]"
+            >
+              <div className="flex items-start gap-3">
+                <span className="text-3xl group-hover:scale-110 transition-transform duration-300">{item.flag}</span>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-white font-bold text-sm mb-2">{item.name}</h4>
+                  <div className="space-y-1.5">
+                    <div className="flex items-start gap-2">
+                      <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-400 border-emerald-500/15 text-[9px] shrink-0 px-1.5 py-0">UG</Badge>
+                      <span className="text-slate-300 text-xs leading-relaxed">{item.ug}</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <Badge variant="secondary" className="bg-teal-500/10 text-teal-400 border-teal-500/15 text-[9px] shrink-0 px-1.5 py-0">PG</Badge>
+                      <span className="text-slate-300 text-xs leading-relaxed">{item.pg}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Key takeaway */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="mt-8 p-5 rounded-2xl bg-gradient-to-r from-emerald-500/5 to-teal-500/5 border border-emerald-500/15 text-center"
+        >
+          <p className="text-emerald-400 font-semibold text-sm mb-1">💡 Good News!</p>
+          <p className="text-slate-300 text-sm">
+            <strong className="text-white">9 out of 10</strong> countries accept <strong className="text-emerald-400">Medium of Instruction (MOI)</strong> letters instead of IELTS.
+            Even for countries that prefer IELTS, alternatives like <strong className="text-teal-400">Duolingo</strong> or <strong className="text-teal-400">university entrance exams</strong> are accepted.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Lead Capture Form Section ─── */
+function LeadCaptureForm() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', country: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSending(true);
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    setSending(false);
+    setSubmitted(true);
+    setTimeout(() => setSubmitted(false), 5000);
+    setFormData({ name: '', phone: '', email: '', country: '' });
+  };
+
+  return (
+    <section id="apply" ref={ref} className="relative py-24 bg-[#060d1b]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+        <div className="absolute -bottom-40 left-1/4 w-[500px] h-[500px] bg-emerald-500/3 rounded-full blur-[120px]" />
+      </div>
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <Send className="w-3 h-3" /> Free Consultation
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Start Your <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Journey Today</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">
+            Fill in your details and our counselor will reach out within 24 hours — completely free!
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="relative p-8 md:p-10 rounded-2xl bg-slate-900/60 border border-slate-800 overflow-hidden">
+            {/* Decorative gradient */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500" />
+            <div className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-emerald-500/5 blur-3xl" />
+            <div className="absolute -bottom-20 -left-20 w-40 h-40 rounded-full bg-teal-500/5 blur-3xl" />
+
+            {submitted ? (
+              <motion.div
+                className="text-center py-12"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/15 border border-emerald-500/30 mb-6"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+                </motion.div>
+                <h3 className="text-2xl font-bold text-white mb-2">Application Submitted! 🎉</h3>
+                <p className="text-slate-400 text-sm max-w-md mx-auto">
+                  Our counselor will contact you within 24 hours. You can also reach us directly on WhatsApp.
+                </p>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {/* Name */}
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-1.5 text-slate-300 text-xs font-semibold uppercase tracking-wider">
+                      <User className="w-3 h-3 text-emerald-400" /> Full Name
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                      placeholder="Muhammad Ahmed"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all duration-300"
+                    />
+                  </div>
+
+                  {/* Phone */}
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-1.5 text-slate-300 text-xs font-semibold uppercase tracking-wider">
+                      <Phone className="w-3 h-3 text-emerald-400" /> Phone / WhatsApp
+                    </label>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
+                      placeholder="03XX XXXXXXX"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all duration-300"
+                    />
+                  </div>
+
+                  {/* Email */}
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-1.5 text-slate-300 text-xs font-semibold uppercase tracking-wider">
+                      <Mail className="w-3 h-3 text-emerald-400" /> Email (Optional)
+                    </label>
+                    <input
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white placeholder:text-slate-600 text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all duration-300"
+                    />
+                  </div>
+
+                  {/* Country Interest */}
+                  <div className="space-y-2">
+                    <label className="flex items-center gap-1.5 text-slate-300 text-xs font-semibold uppercase tracking-wider">
+                      <Flag className="w-3 h-3 text-emerald-400" /> Preferred Country
+                    </label>
+                    <select
+                      required
+                      value={formData.country}
+                      onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
+                      className="w-full px-4 py-3 rounded-xl bg-slate-800/60 border border-slate-700 text-white text-sm focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20 transition-all duration-300 appearance-none cursor-pointer"
+                      style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
+                    >
+                      <option value="" className="bg-slate-900">Select a country...</option>
+                      {countries.map(c => (
+                        <option key={c.name} value={c.name} className="bg-slate-900">{c.flag} {c.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                {/* Submit */}
+                <div className="pt-2">
+                  <Button
+                    type="submit"
+                    disabled={sending}
+                    className="w-full group relative bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-white py-4 text-base font-semibold rounded-xl shadow-xl shadow-emerald-500/20 overflow-hidden disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    <span className="relative z-10 flex items-center justify-center gap-2">
+                      {sending ? (
+                        <>
+                          <motion.div
+                            className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                          />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <MessageSquare className="w-4 h-4" />
+                          Get Free Consultation
+                        </>
+                      )}
+                    </span>
+                  </Button>
+                </div>
+
+                <p className="text-slate-600 text-[11px] text-center">
+                  🔒 Your information is secure and will only be used to contact you about study abroad opportunities.
+                </p>
+              </form>
+            )}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Office Location / Google Maps Section ─── */
+function OfficeLocation() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section ref={ref} className="relative py-24 bg-[#0a1628]">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
+      </div>
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
+            <MapPin className="w-3 h-3" /> Visit Us
+          </span>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight">
+            Our <span className="bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">Office</span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-lg mx-auto">
+            Walk in for a free consultation or give us a call before visiting.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          {/* Info Cards */}
+          <motion.div
+            className="md:col-span-2 space-y-4"
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {/* Address */}
+            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-5 h-5 text-emerald-400" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold text-sm mb-1">Office Address</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed">Sky Consultants KP<br />Peshawar, Khyber Pakhtunkhwa<br />Pakistan</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Phone */}
+            <a href="tel:03075977094" className="block p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-5 h-5 text-teal-400" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold text-sm mb-1">Phone / WhatsApp</h4>
+                  <p className="text-emerald-400 text-sm font-medium">0307 5977094</p>
+                </div>
+              </div>
+            </a>
+
+            {/* Email */}
+            <a href="mailto:skyconsultantskp@gmail.com" className="block p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-5 h-5 text-cyan-400" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold text-sm mb-1">Email</h4>
+                  <p className="text-emerald-400 text-sm font-medium break-all">skyconsultantskp@gmail.com</p>
+                </div>
+              </div>
+            </a>
+
+            {/* Hours */}
+            <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 group">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Clock className="w-5 h-5 text-amber-400" />
+                </div>
+                <div>
+                  <h4 className="text-white font-semibold text-sm mb-1">Office Hours</h4>
+                  <p className="text-slate-400 text-xs leading-relaxed">Mon – Sat: 10:00 AM – 7:00 PM<br />Sunday: By Appointment Only</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Get Directions Button */}
+            <a
+              href="https://share.google/FwOt9nAEN2UWzM243"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-semibold text-sm shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-[1.02] transition-all duration-300"
+            >
+              <ExternalLink className="w-4 h-4" />
+              Get Directions on Google Maps
+            </a>
+          </motion.div>
+
+          {/* Map Embed */}
+          <motion.div
+            className="md:col-span-3"
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className="relative rounded-2xl overflow-hidden border border-slate-800 h-full min-h-[400px] md:min-h-[500px] group">
+              {/* Gradient border effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 z-0" />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106345.1234567!2d71.6!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917b90a7e4e3b%3A0xa816413c4e4c6e2!2sPeshawar%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '400px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Sky Consultants KP Office Location"
+                className="relative z-10 grayscale-[60%] group-hover:grayscale-0 transition-all duration-700"
+              />
+              {/* Map overlay for style */}
+              <div className="absolute inset-0 pointer-events-none z-20 rounded-2xl ring-1 ring-inset ring-white/5" />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── CTA Section ─── */
 function CTASection() {
   const ref = useRef(null);
@@ -1376,6 +1769,7 @@ function StickyNav() {
     { label: 'Home', href: '#home' },
     { label: 'Process', href: '#process' },
     { label: 'Countries', href: '#countries' },
+    { label: 'Apply', href: '#apply' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -2315,11 +2709,14 @@ export default function Home() {
         <CostComparison />
         <ScholarshipHighlights />
         <WorkStayBack />
+        <LanguageRequirements />
         <AboutUs />
         <DocumentChecklist />
         <WhyChooseUs />
         <Testimonials />
         <FAQSection />
+        <LeadCaptureForm />
+        <OfficeLocation />
         <CTASection />
       </main>
       <ContactFooter />
