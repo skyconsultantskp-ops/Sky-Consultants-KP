@@ -120,3 +120,37 @@ Stage Summary:
 - Country flag emojis added inline to all FAQ answers
 - All sections integrated in correct order in Home export
 - All changes lint-clean and pushed to main branch
+
+---
+Task ID: 4
+Agent: Premium Visual Effects Agent
+Task: Make landing page MUCH more alive, stylish, 3D, and attractive with premium visual effects
+
+Work Log:
+- Added CursorGlow component: subtle radial emerald glow following mouse cursor across entire page (600px radius, 7% opacity)
+- Added FloatingParticles component: 30 deterministic floating particles using seededRandom, with gentle y/x/opacity oscillation animations (15-35s duration cycles)
+- Inserted <CursorGlow /> and <FloatingParticles /> in Home export after div wrapper, before StickyNav
+- Added Aurora effect to HeroSection: rotating blurred gradient overlay (135deg, emerald/teal/cyan, 60s rotation cycle) placed before MeshBackground
+- Upgraded hero heading "Starts Here": replaced static gradient with animated shimmer gradient (bg-[linear-gradient(90deg,...)] with bg-[length:200%_100%] and shimmer keyframe animation at 3s)
+- Upgraded TypewriterText: changed from `countries.map(c => c.name)` to `countries.map(c => `${c.flag} ${c.name}`)` so country flags appear alongside names
+- Upgraded StatsSection cards: added hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.2)] and hover:-translate-y-1 to stat card, added group-hover:shadow-lg group-hover:shadow-emerald-500/20 to icon container
+- Upgraded CountryCard: added animated border glow div on hover (linear-gradient 135deg emerald/teal), changed tilt sensitivity from /8 to /6 for more pronounced 3D effect
+- Upgraded CTASection: added pulsing gradient orb (600px, scale 1→1.3→1, opacity 0.5→0.8→0.5, 8s cycle) centered in background
+- Upgraded WhyChooseUs cards: added hover:border-emerald-500/30, hover:shadow-[0_0_30px_-8px_rgba(16,185,129,0.15)], hover:-translate-y-1; upgraded icon from w-11 h-11 to w-12 h-12 with group-hover:scale-115 and group-hover:shadow-xl
+- Upgraded Testimonials cards: added hover:border-emerald-500/30, hover:shadow-[0_0_25px_-8px_rgba(16,185,129,0.12)], hover:-translate-y-1, relative overflow-hidden; added gradient quote mark (text-emerald-500/10, text-5xl, serif) at top-right
+- Upgraded FAQ section: active items now show border-emerald-500/30 and shadow-[0_0_20px_-6px_rgba(16,185,129,0.15)] glow effect
+- Upgraded ScholarshipHighlights cards: added hover effects (border, shadow, -translate-y-1), fully funded cards get shimmer overlay (via-amber-400/5, 4s animation) and border-amber-500/20
+- Upgraded DocumentChecklist: cards now have hover:border-emerald-500/30, hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.12)], hover:-translate-y-1; checkmark icons wrapped in motion.div with whileHover scale:1.2 spring animation
+- Upgraded CountriesFlagParade cards: increased hover from scale-105 to scale-110, shadow-lg to shadow-xl, emerald-500/10 to emerald-500/15, added hover:-translate-y-2, hover:border-emerald-500/40
+- Upgraded ContactFooter cards: all 3 (Phone, Email, Location) now have hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.12)] and hover:-translate-y-1
+- Upgraded section reveal animations: changed 13 section headers from initial={{ opacity: 0, y: 30 }} + animate y:0 to initial={{ opacity: 0, y: 60, scale: 0.98 }} + animate y:0, scale:1 for more dramatic entrance (HowItWorks, CountriesSection, CostComparison, WhyChooseUs, Testimonials, CTASection, ScholarshipHighlights, AboutUs, DocumentChecklist, FAQSection, CountriesFlagParade, ApplicationTimeline, WorkStayBack)
+- Added CSS to globals.css: @keyframes shimmer animation, enhanced custom-scrollbar with dark track background
+
+Stage Summary:
+- 17 targeted visual effect upgrades applied to page.tsx via Edit/MultiEdit
+- New components: CursorGlow, FloatingParticles
+- All sections now have premium hover effects (glow shadows, lift animations, border color transitions)
+- Hero section enhanced with aurora effect, animated shimmer heading, and flag+country typewriter
+- Section reveal animations more dramatic (y:60, scale:0.98 → y:0, scale:1)
+- Lint check passed with zero errors
+- Dev server compiles successfully (200 status, all compilations clean)

@@ -164,6 +164,61 @@ function TypewriterText({ texts, className }: { texts: string[]; className?: str
   );
 }
 
+/* ─── Cursor Glow ─── */
+function CursorGlow() {
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  useEffect(() => {
+    const handleMove = (e: MouseEvent) => setPos({ x: e.clientX, y: e.clientY });
+    window.addEventListener('mousemove', handleMove);
+    return () => window.removeEventListener('mousemove', handleMove);
+  }, []);
+  return (
+    <div
+      className="fixed pointer-events-none z-[100] w-[600px] h-[600px] rounded-full opacity-[0.07] transition-transform duration-75"
+      style={{
+        background: 'radial-gradient(circle, rgba(16,185,129,0.4) 0%, transparent 70%)',
+        left: pos.x - 300,
+        top: pos.y - 300,
+      }}
+    />
+  );
+}
+
+/* ─── Floating Particles ─── */
+function FloatingParticles() {
+  const particles = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    x: seededRandom(i * 7) * 100,
+    y: seededRandom(i * 13 + 3) * 100,
+    size: 1 + seededRandom(i * 3 + 1) * 2,
+    duration: 15 + seededRandom(i * 5) * 20,
+    delay: seededRandom(i * 9) * 10,
+  }));
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-emerald-400"
+          style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.size, height: p.size }}
+          animate={{
+            y: [-30, 30, -30],
+            x: [-10, 10, -10],
+            opacity: [0.15, 0.5, 0.15],
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: 'easeInOut',
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 /* ─── Hero Section ─── */
 function HeroSection() {
   const ref = useRef(null);
@@ -174,6 +229,19 @@ function HeroSection() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#060d1b]">
+      {/* Aurora effect */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute -top-1/2 -left-1/4 w-[150%] h-[100%] opacity-20"
+          style={{
+            background: 'linear-gradient(135deg, rgba(16,185,129,0.3) 0%, rgba(20,184,166,0.1) 25%, transparent 50%, rgba(6,182,212,0.2) 75%, rgba(16,185,129,0.1) 100%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
+        />
+      </div>
+
       <motion.div style={{ y, opacity, scale }} className="absolute inset-0">
         <MeshBackground />
         <ConnectionLines />
@@ -214,7 +282,7 @@ function HeroSection() {
           transition={{ duration: 0.8, delay: 0.15 }}
         >
           <span className="block">Your Future</span>
-          <span className="block mt-2 bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">
+          <span className="block mt-2 bg-[linear-gradient(90deg,#34d399,#2dd4bf,#22d3ee,#34d399)] bg-[length:200%_100%] bg-clip-text text-transparent animate-[shimmer_3s_linear_infinite]">
             Starts Here
           </span>
         </motion.h1>
@@ -229,7 +297,7 @@ function HeroSection() {
           <span className="text-xl md:text-2xl text-slate-300 font-light">
             Study in{' '}
             <TypewriterText
-              texts={countries.map(c => c.name)}
+              texts={countries.map(c => `${c.flag} ${c.name}`)}
               className="text-emerald-400 font-semibold"
             />
           </span>
@@ -348,10 +416,10 @@ function StatsSection() {
               transition={{ duration: 0.5, delay: i * 0.12 }}
               className="group relative"
             >
-              <div className="relative p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/30 transition-all duration-500 text-center overflow-hidden">
+              <div className="relative p-6 md:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/30 transition-all duration-500 text-center overflow-hidden hover:shadow-[0_0_40px_-10px_rgba(16,185,129,0.2)] hover:-translate-y-1">
                 {/* Glow effect */}
                 <div className={`absolute -top-12 -right-12 w-24 h-24 rounded-full bg-gradient-to-r ${stat.color} opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-500`} />
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${stat.bg} mb-4`}>
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${stat.bg} mb-4 group-hover:shadow-lg group-hover:shadow-emerald-500/20 transition-shadow duration-500`}>
                   <stat.icon className="w-6 h-6 text-emerald-400" />
                 </div>
                 <div className="text-3xl md:text-4xl font-extrabold text-white mb-1 tracking-tight">
@@ -383,8 +451,8 @@ function HowItWorks() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -456,8 +524,8 @@ function CountryCard({ country, index, onClick }: { country: Country; index: num
     const y = e.clientY - rect.top;
     mouseX.set(x);
     mouseY.set(y);
-    rotateX.set((y - rect.height / 2) / 8);
-    rotateY.set((rect.width / 2 - x) / 8);
+    rotateX.set((y - rect.height / 2) / 6);
+    rotateY.set((rect.width / 2 - x) / 6);
   }, [mouseX, mouseY, rotateX, rotateY]);
 
   const handleMouseLeave = useCallback(() => {
@@ -503,6 +571,19 @@ function CountryCard({ country, index, onClick }: { country: Country; index: num
             className="absolute inset-0 pointer-events-none z-20 rounded-2xl"
             style={{ background: shineBackground }}
           />
+
+          {/* Animated border glow */}
+          {isHovered && (
+            <motion.div
+              className="absolute inset-0 pointer-events-none z-20 rounded-2xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{
+                background: 'linear-gradient(135deg, rgba(16,185,129,0.15), transparent 40%, transparent 60%, rgba(20,184,166,0.15))',
+              }}
+            />
+          )}
 
           <div className="p-5 relative z-10">
             {/* Country header */}
@@ -755,8 +836,8 @@ function CountriesSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -851,8 +932,8 @@ function CostComparison() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -945,8 +1026,8 @@ function WhyChooseUs() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -966,9 +1047,9 @@ function WhyChooseUs() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className={`group ${feature.span}`}
             >
-              <Card className="bg-slate-900/40 border-slate-800 hover:border-emerald-500/20 transition-all duration-500 h-full overflow-hidden rounded-2xl">
+              <Card className="bg-slate-900/40 border-slate-800 hover:border-emerald-500/30 hover:shadow-[0_0_30px_-8px_rgba(16,185,129,0.15)] transition-all duration-500 h-full overflow-hidden rounded-2xl hover:-translate-y-1">
                 <CardContent className="p-6 md:p-7">
-                  <div className={`inline-flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-r ${feature.color} mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-r ${feature.color} mb-4 shadow-lg group-hover:scale-115 group-hover:shadow-xl transition-all duration-300`}>
                     <feature.icon className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-base font-bold text-white mb-2">{feature.title}</h3>
@@ -1002,8 +1083,8 @@ function Testimonials() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -1023,7 +1104,8 @@ function Testimonials() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group"
             >
-              <div className="h-full p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/20 transition-all duration-300">
+              <div className="h-full p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/30 hover:shadow-[0_0_25px_-8px_rgba(16,185,129,0.12)] transition-all duration-500 relative overflow-hidden hover:-translate-y-1">
+                <div className="absolute top-3 right-4 text-emerald-500/10 text-5xl font-serif leading-none select-none">&ldquo;</div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center text-lg">
                     {t.flag}
@@ -1067,12 +1149,18 @@ function CTASection() {
           animate={{ x: [0, -20, 0], y: [0, 30, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
+        <motion.div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%)' }}
+          animate={{ scale: [1, 1.3, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+        />
       </div>
 
       <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <motion.div
@@ -1127,7 +1215,7 @@ function ContactFooter() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300"
+            className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-emerald-500/30 hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.12)] hover:-translate-y-1 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors">
               <Phone className="w-5 h-5 text-emerald-400" />
@@ -1143,7 +1231,7 @@ function ContactFooter() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-teal-500/30 transition-all duration-300"
+            className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-teal-500/30 hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.12)] hover:-translate-y-1 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center shrink-0 group-hover:bg-teal-500/20 transition-colors">
               <Mail className="w-5 h-5 text-teal-400" />
@@ -1161,7 +1249,7 @@ function ContactFooter() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 transition-all duration-300"
+            className="group flex items-center gap-4 p-5 rounded-2xl bg-slate-900/30 border border-slate-800 hover:border-cyan-500/30 hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.12)] hover:-translate-y-1 transition-all duration-300"
           >
             <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0 group-hover:bg-cyan-500/20 transition-colors">
               <MapPin className="w-5 h-5 text-cyan-400" />
@@ -1510,8 +1598,8 @@ function ScholarshipHighlights() {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -1532,10 +1620,13 @@ function ScholarshipHighlights() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group"
             >
-              <Card className={`bg-slate-900/40 border-slate-800 hover:border-emerald-500/20 transition-all duration-500 h-full overflow-hidden rounded-2xl ${
-                item.isFullyFunded ? 'ring-1 ring-amber-500/20' : ''
+              <Card className={`bg-slate-900/40 border hover:border-emerald-500/30 hover:shadow-[0_0_25px_-8px_rgba(16,185,129,0.12)] transition-all duration-500 h-full overflow-hidden rounded-2xl relative hover:-translate-y-1 ${
+                item.isFullyFunded ? 'ring-1 ring-amber-500/20 border-amber-500/20' : 'border-slate-800'
               }`}>
                 <CardContent className="p-6">
+                  {item.isFullyFunded && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-400/5 to-transparent animate-[shimmer_4s_linear_infinite] bg-[length:200%_100%]" />
+                  )}
                   <div className="flex items-center gap-3 mb-4">
                     <span className="text-3xl">{item.flag}</span>
                     <div>
@@ -1583,8 +1674,8 @@ function AboutUs() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -1682,8 +1773,8 @@ function DocumentChecklist() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -1704,12 +1795,12 @@ function DocumentChecklist() {
               transition={{ duration: 0.5, delay: i * 0.08 }}
               className="group"
             >
-              <div className="relative p-5 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/20 transition-all duration-500 h-full">
+              <div className="relative p-5 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/30 hover:shadow-[0_0_20px_-6px_rgba(16,185,129,0.12)] hover:-translate-y-1 transition-all duration-500 h-full">
                 <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-emerald-500/5 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
                 <div className="flex items-start gap-3">
-                  <div className="shrink-0 mt-0.5">
+                  <motion.div className="shrink-0 mt-0.5" whileHover={{ scale: 1.2 }} transition={{ type: 'spring', stiffness: 400 }}>
                     <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h4 className="text-white font-bold text-sm mb-1.5">{doc.title}</h4>
                     <p className="text-slate-400 text-xs leading-relaxed">{doc.desc}</p>
@@ -1783,8 +1874,8 @@ function FAQSection() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -1803,7 +1894,7 @@ function FAQSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.4, delay: i * 0.06 }}
             >
-              <div className="rounded-2xl bg-slate-900/40 border border-slate-800 overflow-hidden hover:border-emerald-500/20 transition-colors duration-300">
+              <div className={`rounded-2xl bg-slate-900/40 border overflow-hidden transition-all duration-300 ${openIndex === i ? 'border-emerald-500/30 shadow-[0_0_20px_-6px_rgba(16,185,129,0.15)]' : 'border-slate-800 hover:border-emerald-500/20'}`}>
                 <button
                   onClick={() => setOpenIndex(openIndex === i ? null : i)}
                   className="w-full flex items-center justify-between p-5 text-left"
@@ -1950,8 +2041,8 @@ function CountriesFlagParade() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -1975,7 +2066,7 @@ function CountriesFlagParade() {
                 transition={{ duration: 0.5, delay: i * 0.08 }}
                 className="group"
               >
-                <div className="p-5 md:p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/30 transition-all duration-500 text-center hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer">
+                <div className="p-5 md:p-6 rounded-2xl bg-slate-900/40 border border-slate-800 hover:border-emerald-500/40 transition-all duration-500 text-center hover:scale-110 hover:shadow-xl hover:shadow-emerald-500/15 cursor-pointer hover:-translate-y-2">
                   {/* Flag */}
                   <motion.span
                     className="block text-5xl md:text-6xl mb-3"
@@ -2023,8 +2114,8 @@ function ApplicationTimeline() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -2126,8 +2217,8 @@ function WorkStayBack() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: 60, scale: 0.98 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : {}}
           transition={{ duration: 0.6 }}
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
@@ -2182,6 +2273,8 @@ function WorkStayBack() {
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-[#060d1b]">
+      <CursorGlow />
+      <FloatingParticles />
       <StickyNav />
       <main className="flex-1">
         <div id="home"><HeroSection /></div>
