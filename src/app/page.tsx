@@ -1436,7 +1436,7 @@ function OfficeLocation() {
                 </div>
                 <div>
                   <h4 className="text-white font-semibold text-sm mb-1">Office Address</h4>
-                  <p className="text-slate-400 text-xs leading-relaxed">Sky Consultants KP<br />Peshawar, Khyber Pakhtunkhwa<br />Pakistan</p>
+                  <p className="text-slate-400 text-xs leading-relaxed">Sky Consultants KP<br />Shahgul Arat Main Stop, Near Punjab Bank<br />Nowshera, Khyber Pakhtunkhwa<br />Pakistan</p>
                 </div>
               </div>
             </div>
@@ -1503,7 +1503,7 @@ function OfficeLocation() {
               {/* Gradient border effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-teal-500/5 z-0" />
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106345.1234567!2d71.6!3d34.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917b90a7e4e3b%3A0xa816413c4e4c6e2!2sPeshawar%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d53056.9876543!2d71.95!3d34.01!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d90faa6bba8e5b%3A0x4c4e2c5d3a7f8e10!2sNowshera%2C%20Khyber%20Pakhtunkhwa%2C%20Pakistan!5e0!3m2!1sen!2s!4v1700000000000"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '400px' }}
@@ -2117,7 +2117,7 @@ function AboutUs() {
             className="space-y-6"
           >
             <p className="text-slate-300 text-lg leading-relaxed">
-              Based in <span className="text-white font-semibold">Khyber Pakhtunkhwa, Pakistan</span>, Sky Consultants KP is a premier education consultancy dedicated to helping students achieve their dream of studying abroad. We specialize in guiding students to top universities across <span className="text-emerald-400 font-semibold">10+ countries</span> including Italy, Turkey, Germany, UK, and more.
+              Based in <span className="text-white font-semibold">Nowshera, Khyber Pakhtunkhwa</span>, Sky Consultants KP is a premier education consultancy dedicated to helping students achieve their dream of studying abroad. We specialize in guiding students to top universities across <span className="text-emerald-400 font-semibold">10+ countries</span> including Italy, Turkey, Germany, UK, and more.
             </p>
             <p className="text-slate-300 text-lg leading-relaxed">
               With over <span className="text-white font-semibold">5 years of experience</span> and a proven track record of <span className="text-emerald-400 font-semibold">98% visa success rate</span>, we provide end-to-end support — from free consultation and document preparation to university admission and visa filing.
